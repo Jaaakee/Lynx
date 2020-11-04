@@ -1,0 +1,7 @@
+name: ${project.name}
+version: ${project.version}
+main: net.projectlynx.lynx.LynxPlugin
+api-version: 1.16
+author: Jaaakee
+description: A player moderation plugin for Minecraft servers (Bukkit/Spigot, BungeeCord, and more)
+website: projectlynx.net

@@ -1,0 +1,7 @@
+# Lynx Configuration
+mysql:
+  host: localhost
+  port: 3306
+  database: lynx
+  user: root
+  password: ''
