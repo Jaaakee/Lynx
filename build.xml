@@ -14,7 +14,7 @@
     </condition>
 
     <!-- Ninja: Read your pom.xml file to find the Foundation version we will be using -->
-    <xmlproperty file="pom.xml" prefix="pom" keeproot="false" />
+    <xmlproperty file="pom.xml" prefix="pom" keeproot="false"/>
     <property name="foundation.version" value="5.7.2"/>
     <property name="mysql.version" value="8.0.22"/>
 
@@ -32,8 +32,10 @@
                 just make sure you have Foundation in the same workspace folder where you have this plugin.
             -->
 
-            <zipgroupfileset dir="${user.home}/.m2/repository/com/github/kangarko/Foundation/${foundation.version}/" includes="**/*${foundation.version}.jar" />
-            <zipgroupfileset dir="${user.home}/.m2/repository/mysql/mysql-connector-java/${mysql.version}/" includes="**/*${mysql.version}.jar" />
+            <zipgroupfileset dir="${user.home}/.m2/repository/com/github/kangarko/Foundation/${foundation.version}/"
+                             includes="**/*${foundation.version}.jar"/>
+            <zipgroupfileset dir="${user.home}/.m2/repository/mysql/mysql-connector-java/${mysql.version}/"
+                             includes="**/*${mysql.version}.jar"/>
             <!-- <fileset dir="../Foundation/target/classes" /> -->
         </jar>
     </target>

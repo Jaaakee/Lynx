@@ -11,8 +11,7 @@ public class PlayerLeave implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerQuitEvent event) {
 
-        PlayerData playerData = PlayerData.getCache(event.getPlayer().getUniqueId());
-        playerData.setBanned(true);
+        PlayerData playerData = PlayerData.getCache(event.getPlayer());
 
         LynxDatabase.getInstance().save(event.getPlayer().getName(), event.getPlayer().getUniqueId(), playerData);
     }

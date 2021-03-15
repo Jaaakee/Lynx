@@ -1,9 +1,6 @@
 package net.projectlynx.lynx.commands;
 
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.Common;
 import org.mineacademy.fo.command.SimpleCommand;
 
 public abstract class PlayerRequiredComand extends SimpleCommand {

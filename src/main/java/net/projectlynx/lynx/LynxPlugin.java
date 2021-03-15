@@ -1,8 +1,8 @@
 package net.projectlynx.lynx;
 
 import net.projectlynx.lynx.commands.bans.BanGUICommand;
-import net.projectlynx.lynx.listeners.PlayerLeave;
 import net.projectlynx.lynx.listeners.AsyncPlayerPreLogin;
+import net.projectlynx.lynx.listeners.PlayerLeave;
 import net.projectlynx.lynx.storage.database.LynxDatabase;
 import org.mineacademy.fo.plugin.SimplePlugin;
 
@@ -26,6 +26,6 @@ public final class LynxPlugin extends SimplePlugin {
 
     @Override
     protected void onPluginReload() {
-      // Plugin reload logic
+        // Plugin reload logic
     }
 }

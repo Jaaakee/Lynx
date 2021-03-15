@@ -3,18 +3,17 @@ package net.projectlynx.lynx.storage;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.entity.Player;
-import org.mineacademy.fo.collection.expiringmap.ExpiringMap;
 import org.mineacademy.fo.settings.YamlSectionConfig;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
-@Getter @Setter
+@Getter
+@Setter
 public class PlayerData extends YamlSectionConfig {
 
-    private static Map<UUID, PlayerData> cacheMap = new HashMap<>();
+    private static final Map<UUID, PlayerData> cacheMap = new HashMap<>();
 
     private final UUID uuid;
     private boolean isBanned, isMuted;
@@ -24,44 +23,8 @@ public class PlayerData extends YamlSectionConfig {
         super(uuid.toString());
 
         this.uuid = uuid;
-        loadConfiguration(NO_DEFAULT, "data.db");
+        loadConfiguration(null, "data.db");
     }
-
-    @Override
-    protected void onLoadFinish() {
-        isBanned = getBoolean("Banned", false);
-        isMuted = getBoolean("Muted", false);
-        banDate = getString("Ban_Date", "N/A");
-        muteDate = getString("Mute_Date", "N/A");
-    }
-
-    public void setBanned(final boolean isBanned) {
-        this.isBanned = isBanned;
-
-        save("Banned", isBanned);
-    }
-
-    public void setMuted(final boolean isMuted) {
-        this.isMuted = isMuted;
-
-        save("Muted", isMuted);
-    }
-
-    public void setBanDate(final String banDate) {
-        this.banDate = banDate;
-
-        save("Ban_Date", banDate);
-    }
-
-    public void setMuteDate(final String muteDate) {
-        this.muteDate = muteDate;
-
-        save("Mute_Date", muteDate);
-    }
-
-    // --------------------------------------------------------------------------------------------------------------
-    // Static methods below
-    // --------------------------------------------------------------------------------------------------------------
 
     public static PlayerData getCache(final Player player) {
         return getCache(player.getUniqueId());
@@ -77,5 +40,49 @@ public class PlayerData extends YamlSectionConfig {
         }
 
         return data;
+    }
+
+    @Override
+    protected void onLoadFinish() {
+
+        if (isSet("Banned"))
+            isBanned = getBoolean("Banned", false);
+
+        if (isSet("Banned"))
+            isMuted = getBoolean("Muted", false);
+
+        if (isSet("Banned"))
+            banDate = getString("Ban_Date", "N/A");
+
+        if (isSet("Banned"))
+            muteDate = getString("Mute_Date", "N/A");
+    }
+
+    public void setBanned(final boolean isBanned) {
+        this.isBanned = isBanned;
+
+        save("Banned", isBanned);
+    }
+
+    public void setMuted(final boolean isMuted) {
+        this.isMuted = isMuted;
+
+        save("Muted", isMuted);
+    }
+
+    // --------------------------------------------------------------------------------------------------------------
+    // Static methods below
+    // --------------------------------------------------------------------------------------------------------------
+
+    public void setBanDate(final String banDate) {
+        this.banDate = banDate;
+
+        save("Ban_Date", banDate);
+    }
+
+    public void setMuteDate(final String muteDate) {
+        this.muteDate = muteDate;
+
+        save("Mute_Date", muteDate);
     }
 }

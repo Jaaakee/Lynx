@@ -6,6 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.mineacademy.fo.Common;
 
 import java.util.UUID;
 
@@ -15,18 +16,25 @@ public class AsyncPlayerPreLogin implements Listener {
     public void onPlayerPreLogin(AsyncPlayerPreLoginEvent event) {
         final UUID uuid = event.getUniqueId();
 
-        PlayerData data = PlayerData.getCache(uuid);
+        final PlayerData data = PlayerData.getCache(uuid);
+        LynxDatabase.getInstance().load(uuid, data);
 
         if (data.isBanned()) {
             event.setLoginResult(AsyncPlayerPreLoginEvent.Result.KICK_BANNED);
             event.setKickMessage("Banned");
 
-            data.setBanned(false);
+            Common.runLater(() -> {
+                data.setBanned(false);
+            });
+
             return;
         }
 
         System.out.println("Loading from Database...");
-        LynxDatabase.getInstance().load(uuid, data);
+
+        Common.runLater(() -> {
+            data.setBanned(true);
+        });
 
         // TODO: Check if player is banned
         // TODO: If player is banned, set preloginevent result to KICK_BANNED
