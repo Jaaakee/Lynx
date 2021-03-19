@@ -30,8 +30,6 @@ public class AsyncPlayerPreLogin implements Listener {
             return;
         }
 
-        System.out.println("Loading from Database...");
-
         Common.runLater(() -> {
             data.setBanned(true);
         });

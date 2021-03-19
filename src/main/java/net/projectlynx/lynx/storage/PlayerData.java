@@ -48,13 +48,13 @@ public class PlayerData extends YamlSectionConfig {
         if (isSet("Banned"))
             isBanned = getBoolean("Banned", false);
 
-        if (isSet("Banned"))
+        if (isSet("Muted"))
             isMuted = getBoolean("Muted", false);
 
-        if (isSet("Banned"))
+        if (isSet("Ban_Date"))
             banDate = getString("Ban_Date", "N/A");
 
-        if (isSet("Banned"))
+        if (isSet("Mute_Date"))
             muteDate = getString("Mute_Date", "N/A");
     }
 

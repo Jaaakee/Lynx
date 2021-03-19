@@ -15,7 +15,7 @@
 
     <!-- Ninja: Read your pom.xml file to find the Foundation version we will be using -->
     <xmlproperty file="pom.xml" prefix="pom" keeproot="false"/>
-    <property name="foundation.version" value="5.7.2"/>
+    <property name="foundation.version" value="5.8.0"/>
     <property name="mysql.version" value="8.0.22"/>
 
     <!-- Finally, compile the plugin -->
